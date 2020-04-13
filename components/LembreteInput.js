@@ -1,44 +1,52 @@
 import React, { useState } from 'react';
 import {View, TextInput, Button, StyleSheet} from 'react-native';
+import MedidasLembreteInput from '../medidas/MedidasLembreteInput'
+import SombrasLembreteInput from '../sombras/SombrasLembreteInput'
 
 const LembreteInput = (props) =>{
-    const [lembrete, setLembrete] = useState ('');
+    const [nome, setNome] = useState ('');
 
-    const capturarLembrete = (lembrete) => {
-        setLembrete(lembrete);    
+    const [telefone, setTelefone] = useState ('');
+
+    const capturarNome = (nome) => {
+        setNome(nome);    
     }
 
-    return (
-        <View style={styles.lembreteView}>
-        {/*Usuário irá inserir lembretes aqui*/}
-        <TextInput 
-          placeholder="Nome"
-          style={styles.lembreteTextInput}
-          onChangeText={capturarLembrete}
-          value={lembrete}
-        />
-        <Button
-          title="+"
-          onPress={() => {props.onAdicionarLembrete(lembrete)}}
-        />
-      </View>
+    const capturarTelefone = (telefone) => {
+      setTelefone(telefone);    
+  }
+
+  return (
+    <View
+        flexDirection={MedidasLembreteInput.LembreteInputFlexDirectionView}
+        justifyContent={MedidasLembreteInput.LembreteInputJustifyContentView}
+        alignItems={MedidasLembreteInput.LembreteInputAlignItemsView}
+        marginBottom={MedidasLembreteInput.LembreteInputMarginBottomView}
+    >
+    <TextInput 
+      placeholder="Nome..."
+      padding={MedidasLembreteInput.LembreteInputPadding}
+      marginBottom={MedidasLembreteInput.UsuairoInputMarginBttm}
+      borderBottomColor={SombrasLembreteInput.LembreteInputColor}
+      onChangeText={capturarNome}
+      value={nome}
+    />
+    <TextInput 
+      placeholder="Telefone..."
+      
+      padding={MedidasLembreteInput.LembreteInputPadding}
+      marginBottom={MedidasLembreteInput.UsuairoInputMarginBttm}
+      borderBottomColor={SombrasLembreteInput.LembreteInputColor}
+      onChangeText={capturarTelefone}
+      value={telefone}
+    />
+    <Button 
+      title="+"
+      onPress={() => {props.onAdicionarLembrete(nome, telefone)}}
+    />
+    </View>
     );
 }
 
-const styles = StyleSheet.create({
-    lembreteView: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: 6
-    },
-    lembreteTextInput: {
-        width: '80%',
-        borderBottomColor: 'black',
-        borderBottomWidth: 1,
-        padding: 2,
-        marginBottom: 4
-    }
-});
 
 export default LembreteInput;
