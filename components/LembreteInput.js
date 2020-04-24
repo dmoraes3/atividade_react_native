@@ -1,52 +1,54 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {View, TextInput, Button, StyleSheet} from 'react-native';
-import MedidasLembreteInput from '../medidas/MedidasLembreteInput'
-import SombrasLembreteInput from '../sombras/SombrasLembreteInput'
 
-const LembreteInput = (props) =>{
-    const [nome, setNome] = useState ('');
+const LembreteInput = (props) => {
+    const [nome, setNome] = useState('');
 
-    const [telefone, setTelefone] = useState ('');
+    const [telefone, setTelefone] = useState('');
 
     const capturarNome = (nome) => {
-        setNome(nome);    
+        setNome(nome);
     }
 
     const capturarTelefone = (telefone) => {
-      setTelefone(telefone);    
-  }
+        setTelefone(telefone);
+    }
 
-  return (
-    <View
-        flexDirection={MedidasLembreteInput.LembreteInputFlexDirectionView}
-        justifyContent={MedidasLembreteInput.LembreteInputJustifyContentView}
-        alignItems={MedidasLembreteInput.LembreteInputAlignItemsView}
-        marginBottom={MedidasLembreteInput.LembreteInputMarginBottomView}
-    >
+    return (
+    <View style={styles.tela}>
     <TextInput 
       placeholder="Nome..."
-      padding={MedidasLembreteInput.LembreteInputPadding}
-      marginBottom={MedidasLembreteInput.UsuairoInputMarginBttm}
-      borderBottomColor={SombrasLembreteInput.LembreteInputColor}
+      style={styles.form}
       onChangeText={capturarNome}
       value={nome}
     />
     <TextInput 
       placeholder="Telefone..."
-      
-      padding={MedidasLembreteInput.LembreteInputPadding}
-      marginBottom={MedidasLembreteInput.UsuairoInputMarginBttm}
-      borderBottomColor={SombrasLembreteInput.LembreteInputColor}
+      style={styles.form}
       onChangeText={capturarTelefone}
       value={telefone}
     />
     <Button 
       title="+"
-      onPress={() => {props.onAdicionarLembrete(nome, telefone)}}
+      onPress={() => {props.onAdicionarUsuario(nome, telefone)}}
     />
     </View>
     );
 }
+
+const styles = StyleSheet.create({
+    tela:{
+      flexDirection: 'row',
+      marginBottom: 6,
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    },
+    form: { 
+      padding: 2,
+      marginBottom: 2,
+      borderBottomColor: 'black'
+    }
+})
 
 
 export default LembreteInput;

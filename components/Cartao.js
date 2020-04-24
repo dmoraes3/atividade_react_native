@@ -1,23 +1,15 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import Cores from '../cores/cores'
-import MedidasCartao from '../medidas/MedidasCartao'
-import SombrasCartao from '../sombras/SombrasCartao'
+import Cores from '../cores/cores';
 
 const Cartao = (props) => {
-    return(
-        <View 
-            style={{...estilos.cartao, ...props.estilos}} 
-            backgroundColor={Cores.accent}
-            padding={MedidasCartao.cartaoPadding}
-            margin={MedidasCartao.cartaoMargin}
-            elevation={SombrasCartao.cartaoElevacaoSombra}
-        >
+    return (
+        <View style={{...estilos.cartao, ...props.estilos}}>
             {props.children}
         </View>
+    )
 
-    );
-}
+};
 
 const estilos = StyleSheet.create({
     cartao: {
@@ -28,6 +20,9 @@ const estilos = StyleSheet.create({
         },
         shadowRadius: 6,
         shadowOpacity: 0.32,
+        backgroundColor: 'white',
+        elevation: 8,
+        padding: 12,
         borderRadius: 12,
         alignItems: 'center'
     }
